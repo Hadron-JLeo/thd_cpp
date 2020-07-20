@@ -1,0 +1,115 @@
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#include <conio.h>
+
+
+
+// --- 'Prototypen' ---
+
+void print();
+
+void get_input();
+
+void empty_heap();
+
+void leo_protocol();
+
+
+
+// -- Ab hier folgen meine Funktionen --
+
+void main ()
+
+{
+
+ // Protocol -- anfang
+
+ system("color 0A");
+
+// leo_protocol(1);
+
+ // Protocol -- ende
+
+ int *integer_1 = (int *) malloc(sizeof(int));
+
+ int *integer_2 = (int *) malloc(sizeof(int));
+
+ int *integer_3 = (int *) malloc(sizeof(int));
+
+ 
+
+ get_input(&integer_1, &integer_2, &integer_3);
+
+ print(integer_1, integer_2, integer_3);
+
+ empty_heap(&integer_1, &integer_2, &integer_3);
+
+ // Protocol -- beende das Programm
+
+// leo_protocol(0);
+
+}
+
+
+
+void get_input (int *integer_1, int *integer_2, int *integer_3)
+
+{
+
+ printf("Bitte geben sie zwei Zahlen ein, nacheinander, damit ich diese zum Heap dazutun kann!\n");
+
+ scanf("%i", integer_1);
+
+ scanf("%i", integer_2);
+
+ *integer_3 = (int)*integer_1 + (int)*integer_2;
+
+}
+
+
+
+void print(int a, int b, int c)
+
+{
+
+ printf("Meine drei pointer: \n 1. %i %i \n 2. %i %i \n 3. %i %i \n -- 'Ende' -- ", a, &a, b, &b, c, &c);
+
+}
+
+
+
+void empty_heap (int *integer_1, int *integer_2, int *integer_3)
+
+{
+
+ char input;
+
+ printf("Willst du den Heap entleeren? y/n \n");
+
+ scanf("%s", &input);
+
+ if (input == 'y')
+
+ {
+
+  free(integer_1);
+
+  free(integer_2);
+
+  free(integer_3);
+
+  printf("Dein Heap wurde entleert! <//> = <//> \n");
+
+ }
+
+ else
+
+ {
+
+ printf("Ok, Ciao!\n");
+
+ }
+
+}
